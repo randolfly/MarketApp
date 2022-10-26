@@ -1,0 +1,12 @@
+E:\Code\C#\Blazor\MarketApp\Shared\bin\Debug\net6.0\MarketApp.Shared.deps.json
+E:\Code\C#\Blazor\MarketApp\Shared\bin\Debug\net6.0\MarketApp.Shared.dll
+E:\Code\C#\Blazor\MarketApp\Shared\bin\Debug\net6.0\MarketApp.Shared.pdb
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\MarketApp.Shared.csproj.AssemblyReference.cache
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\MarketApp.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\MarketApp.Shared.AssemblyInfoInputs.cache
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\MarketApp.Shared.AssemblyInfo.cs
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\MarketApp.Shared.csproj.CoreCompileInputs.cache
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\MarketApp.Shared.dll
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\refint\MarketApp.Shared.dll
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\MarketApp.Shared.pdb
+E:\Code\C#\Blazor\MarketApp\Shared\obj\Debug\net6.0\ref\MarketApp.Shared.dll
