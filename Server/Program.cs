@@ -1,4 +1,5 @@
 using MarketApp.Server.Data;
+using MarketApp.Server.Services.ProductService;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// self-defined services
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

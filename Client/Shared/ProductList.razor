@@ -39,7 +39,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _products = await Http.GetFromJsonAsync<Product[]>("api/Product");
+        var result = await Http.GetFromJsonAsync<ServiceResponse<Product[]>>("api/Product");
+        _products = result?.Data;
     }
-
 }
