@@ -1,5 +1,5 @@
-﻿# Created by https://www.toptal.com/developers/gitignore/api/csharp,aspnetcore
-# Edit at https://www.toptal.com/developers/gitignore?templates=csharp,aspnetcore
+# Created by https://www.toptal.com/developers/gitignore/api/CSharp,ASPNETCore
+# Edit at https://www.toptal.com/developers/gitignore?templates=CSharp,ASPNETCore
 
 ### ASPNETCore ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -523,4 +523,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 
-# End of https://www.toptal.com/developers/gitignore/api/csharp,aspnetcore
+# End of https://www.toptal.com/developers/gitignore/api/CSharp,ASPNETCore
+
