@@ -19,9 +19,17 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetProduct()
+    public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProducts()
     {
-        var response = await _productService.GetProductAsync();
+        var response = await _productService.GetProductsAsync();
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("{productId}")]
+    public async Task<ActionResult<ServiceResponse<Product>>> GetProduct(int productId)
+    {
+        var response = await _productService.GetProductAsync(productId);
         return Ok(response);
     }
 }

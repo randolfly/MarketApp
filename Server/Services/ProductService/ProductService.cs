@@ -12,12 +12,30 @@ public class ProductService : IProductService
     {
         _dataContext = dataContext;
     }
-    public async Task<ServiceResponse<Product[]>> GetProductAsync()
+
+    public async Task<ServiceResponse<List<Product>>> GetProductsAsync()
     {
-        var response = new ServiceResponse<Product[]>()
+        var response = new ServiceResponse<List<Product>>()
         {
-            Data = await _dataContext.Products.ToArrayAsync()
+            Data = await _dataContext.Products.ToListAsync()
         };
+        return response;
+    }
+
+    public async Task<ServiceResponse<Product>> GetProductAsync(int productId)
+    {
+        var response = new ServiceResponse<Product>();
+        var product = await _dataContext.Products.FindAsync(productId);
+        if (product == null)
+        {
+            response.Success = false;
+            response.Message = "Sorry, product not exists.";
+        }
+        else
+        {
+            response.Data = product;
+            response.Success = true;
+        }
         return response;
     }
 }

@@ -16,10 +16,52 @@ namespace MarketApp.Server.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.2.22472.11");
 
+            modelBuilder.Entity("MarketApp.Shared.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Books",
+                            Url = "books"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Games",
+                            Url = "games"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Video Games",
+                            Url = "video-games"
+                        });
+                });
+
             modelBuilder.Entity("MarketApp.Shared.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -39,12 +81,15 @@ namespace MarketApp.Server.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            CategoryId = 1,
                             Description = "PDDDD",
                             ImageUrl = "https://chaoskey.oschina.io/notes/images/0109.jpg",
                             Price = 9.99m,
@@ -53,6 +98,7 @@ namespace MarketApp.Server.Migrations
                         new
                         {
                             Id = 2,
+                            CategoryId = 1,
                             Description = "PDDDD",
                             ImageUrl = "https://chaoskey.oschina.io/notes/images/0109.jpg",
                             Price = 19.99m,
@@ -61,11 +107,23 @@ namespace MarketApp.Server.Migrations
                         new
                         {
                             Id = 3,
+                            CategoryId = 1,
                             Description = "PDDDD",
                             ImageUrl = "https://chaoskey.oschina.io/notes/images/0109.jpg",
                             Price = 29.99m,
                             Title = "C"
                         });
+                });
+
+            modelBuilder.Entity("MarketApp.Shared.Product", b =>
+                {
+                    b.HasOne("MarketApp.Shared.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

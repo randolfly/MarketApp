@@ -1,7 +1,8 @@
 ﻿@using System.Net
-@inject HttpClient Http
+@using MarketApp.Client.Services
+@inject IProductService ProductService
 
-@if (_products == null)
+@if (ProductService.Products == null || ProductService.Products.Count == 0)
 {
     <p>
         <em>Loading...</em>
@@ -10,16 +11,16 @@
 else
 {
     <ul class="list-styled">
-        @foreach (var product in _products)
+        @foreach (var product in ProductService.Products)
         {
             <li class="media my-3">
                 <div class="media-img-wrapper">
-                    <a href="#">
+                    <a href="/product/@product.Id">
                         <img class="media-img" src="@product.ImageUrl" alt="@product.Title"/>
                     </a>
                 </div>
                 <body class="media-body m-xl-5">
-                <a href="#">
+                <a href="/product/@product.Id">
                     <h4 class="mb-0">@product.Title</h4>
                 </a>
                 <p>@product.Description</p>
@@ -35,11 +36,9 @@ else
 
 @code {
 
-    private static Product[]? _products;
-
     protected override async Task OnInitializedAsync()
     {
-        var result = await Http.GetFromJsonAsync<ServiceResponse<Product[]>>("api/Product");
-        _products = result?.Data;
+        await ProductService.GetProducts();
     }
+
 }
