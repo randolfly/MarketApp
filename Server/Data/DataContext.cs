@@ -1,4 +1,5 @@
-﻿using MarketApp.Shared;
+﻿using Bogus;
+using MarketApp.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketApp.Server.Data;
@@ -14,54 +15,38 @@ public class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Category>().HasData(
-            new Category()
-            {
-                Id = 1,
-                Name = "Books",
-                Url = "books"
-            },
-            new Category()
-            {
-                Id = 2,
-                Name = "Games",
-                Url = "games"
-            },
-            new Category()
-            {
-                Id = 3,
-                Name = "Video Games",
-                Url = "video-games"
-            }
-        );
-        modelBuilder.Entity<Product>().HasData(
-            new Product()
-            {
-                Id = 1,
-                Title = "A",
-                Description = "PDDDD",
-                Price = 9.99m,
-                ImageUrl = "https://chaoskey.oschina.io/notes/images/0109.jpg",
-                CategoryId = 1,
-            },
-            new Product()
-            {
-                Id = 2,
-                Title = "B",
-                Description = "PDDDD",
-                Price = 19.99m,
-                ImageUrl = "https://chaoskey.oschina.io/notes/images/0109.jpg",
-                CategoryId = 1,
-            },
-            new Product()
-            {
-                Id = 3,
-                Title = "C",
-                Description = "PDDDD",
-                Price = 29.99m,
-                ImageUrl = "https://chaoskey.oschina.io/notes/images/0109.jpg",
-                CategoryId = 1,
-            }
-        );
+        // generate random category-20
+        int categoryNum = 20;
+        int categoryId = 1;
+        var categoryGenerater = new Faker<Category>()
+            //Ensure all properties have rules. By default, StrictMode is false
+            //Set a global policy by using Faker.DefaultStrictMode
+            .StrictMode(true)
+            //OrderId is deterministic
+            .RuleFor(o => o.Id, f => categoryId++)
+            .RuleFor(o => o.Name, f => f.Random.Word())
+            .RuleFor(o => o.Url, (f, o) => o.Name.ToLower());
+
+        var randomCategories = categoryGenerater.Generate(categoryNum);
+        modelBuilder.Entity<Category>().HasData(randomCategories);
+
+        // generate random products-100
+        int productNum = 100;
+        int productId = 1;
+        var productGenerater = new Faker<Product>()
+            //Ensure all properties have rules. By default, StrictMode is false
+            //Set a global policy by using Faker.DefaultStrictMode
+            .StrictMode(false)
+            //OrderId is deterministic
+            .RuleFor(o => o.Id, f => productId++)
+            .RuleFor(o => o.Title, f => f.Random.Word())
+            .RuleFor(o => o.Description, f => f.Random.Words())
+            .RuleFor(o => o.ImageUrl, f => f.Image.PicsumUrl())
+            .RuleFor(o => o.CategoryId, f => f.Random.Number(min: 1, max: categoryId - 1))
+            .RuleFor(o => o.Price, f => f.Random.Decimal());
+
+        var randomProducts = productGenerater.Generate(productNum);
+        // randomProducts.Sort((x, y) => x.Id - y.Id);
+        modelBuilder.Entity<Product>().HasData(randomProducts);
     }
 }
