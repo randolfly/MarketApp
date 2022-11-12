@@ -15,8 +15,8 @@ public class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // generate random category-20
-        int categoryNum = 20;
+        // generate random category-5
+        int categoryNum = 5;
         int categoryId = 1;
         var categoryGenerater = new Faker<Category>()
             //Ensure all properties have rules. By default, StrictMode is false

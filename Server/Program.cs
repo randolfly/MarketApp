@@ -1,4 +1,5 @@
 using MarketApp.Server.Data;
+using MarketApp.Server.Services.CategoryService;
 using MarketApp.Server.Services.ProductService;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ builder.Services.AddSwaggerGen();
 
 // self-defined services
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

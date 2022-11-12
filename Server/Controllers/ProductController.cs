@@ -10,8 +10,7 @@ namespace MarketApp.Server.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ProductController : ControllerBase
-{
+public class ProductController : ControllerBase {
     private readonly IProductService _productService;
 
     public ProductController(IProductService productService)
@@ -31,6 +30,14 @@ public class ProductController : ControllerBase
     public async Task<ActionResult<ServiceResponse<Product>>> GetProduct(int productId)
     {
         var response = await _productService.GetProductAsync(productId);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("category/{categoryUrl}")]
+    public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProductsByCategory(string categoryUrl)
+    {
+        var response = await _productService.GetProductsByCategory(categoryUrl);
         return Ok(response);
     }
 

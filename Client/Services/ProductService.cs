@@ -3,8 +3,7 @@ using MarketApp.Shared;
 
 namespace MarketApp.Client.Services;
 
-public class ProductService : IProductService
-{
+public class ProductService : IProductService {
     private readonly HttpClient _httpClient;
 
     public ProductService(HttpClient httpClient)
@@ -12,14 +11,19 @@ public class ProductService : IProductService
         _httpClient = httpClient;
     }
 
-    public List<Product>? Products { get; set; }
-    public Product? SelectedProduct { get; set; }
+    public event Action ProductsChanged;
 
-    public async Task GetProducts()
+    public List<Product>? Products { get; set; }
+
+    public async Task GetProducts(string? categoryUrl)
     {
-        var result =
-            await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/Product");
+        ServiceResponse<List<Product>>? result;
+        if (categoryUrl == null)
+            result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/Product");
+        else
+            result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>($"api/Product/category/{categoryUrl}");
         Products = result?.Data;
+        ProductsChanged.Invoke();
     }
 
     public async Task<ServiceResponse<Product>> GetProduct(int productId)

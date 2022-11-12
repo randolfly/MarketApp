@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MarketApp.Server.Services.ProductService;
 
-public class ProductService : IProductService
-{
+public class ProductService : IProductService {
     private readonly DataContext _dataContext;
 
     public ProductService(DataContext dataContext)
@@ -36,6 +35,16 @@ public class ProductService : IProductService
             response.Data = product;
             response.Success = true;
         }
+        return response;
+    }
+    public async Task<ServiceResponse<List<Product>?>> GetProductsByCategory(string categoryUrl)
+    {
+        var response = new ServiceResponse<List<Product>>
+        {
+            Data = await _dataContext.Products
+                .Where(p => p.Category.Url.ToLower().Equals(categoryUrl.ToLower()))
+                .ToListAsync()
+        };
         return response;
     }
 }
