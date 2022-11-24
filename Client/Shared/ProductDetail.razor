@@ -15,8 +15,26 @@ else
         <div class="media-body">
             <h2 class="mb-0">@_product.Title</h2>
             <p>@_product.Description</p>
+            @if (_product.ProductVariants != null && _product.ProductVariants.Count > 0)
+            {
+                <div class="mb-3">
+                    <select class="form-control" @bind="_currentTypeId">
+                        @foreach (var variant in _product.ProductVariants)
+                        {
+                            <option value="@variant.ProductTypeId">
+                                @variant.ProductType.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            }
+            
             <h4 class="price">
-                $@_product.Price
+                @if (GetSelectedProductVariant() != null)
+                {
+                    <h6>$OriginalPrice: @GetSelectedProductVariant().OriginalPrice</h6>
+                    <h6>$Price: @GetSelectedProductVariant().Price</h6>
+                }
             </h4>
         </div>
     </div>
@@ -25,6 +43,7 @@ else
 @code {
     private Product? _product;
     private string _message = string.Empty;
+    private int _currentTypeId = 1;
 
     [Parameter]
     public int Id { get; set; }
@@ -37,11 +56,19 @@ else
         if (response.Success)
         {
             _product = response.Data;
+            if (_product.ProductVariants.Count > 0)
+                _currentTypeId = _product.ProductVariants[0].ProductTypeId;
         }
         else
         {
             _message = response.Message;
         }
+    }
+
+    private ProductVariant? GetSelectedProductVariant()
+    {
+        var variant = _product.ProductVariants.FirstOrDefault(v => v.ProductTypeId == _currentTypeId);
+        return variant;
     }
 
 }

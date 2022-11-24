@@ -41,6 +41,22 @@ public class ProductController : ControllerBase {
         return Ok(response);
     }
 
+    [HttpGet]
+    [Route("search/{searchText}")]
+    public async Task<ActionResult<ServiceResponse<List<Product>>>> SearchProducts(string searchText)
+    {
+        var response = await _productService.SearchProducts(searchText);
+        return Ok(response);
+    }
+    
+    [HttpGet]
+    [Route("search-suggestions/{searchText}")]
+    public async Task<ActionResult<ServiceResponse<List<string>>>> GetProductSearchSuggestions(string searchText)
+    {
+        var response = await _productService.GetProductSearchSuggestions(searchText);
+        return Ok(response);
+    }
+
     #region test api and functions
 
     [HttpGet]
@@ -58,28 +74,6 @@ public class ProductController : ControllerBase {
             .RuleFor(o => o.Url, (f, o) => o.Name.ToLower());
         Console.WriteLine($"ID LENGTH: {categoryId}");
         return Ok(categoryGenerater.Generate(categoryNum));
-    }
-
-    [HttpGet]
-    [Route("/api/random/product/{productNum}")]
-    public ActionResult<List<Product>> GetRandomProducts(int productNum = 5)
-    {
-        int productId = 1;
-        var productGenerater = new Faker<Product>()
-            //Ensure all properties have rules. By default, StrictMode is false
-            //Set a global policy by using Faker.DefaultStrictMode
-            .StrictMode(false)
-            //OrderId is deterministic
-            .RuleFor(o => o.Id, f => productId++)
-            .RuleFor(o => o.Title, f => f.Random.Word())
-            .RuleFor(o => o.Description, f => f.Random.Words(10))
-            .RuleFor(o => o.ImageUrl, f => f.Image.PicsumUrl())
-            .RuleFor(o => o.CategoryId, f => f.Random.Number(min: 1, max: 100))
-            .RuleFor(o => o.Price, f => f.Random.Decimal());
-        Console.WriteLine($"ID LENGTH: {productId}");
-        var randomProducts = productGenerater.Generate(productNum);
-        randomProducts.Sort((x, y) => x.Id - y.Id);
-        return Ok(randomProducts);
     }
 
     #endregion

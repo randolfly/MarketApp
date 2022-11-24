@@ -38,32 +38,20 @@ namespace MarketApp.Server.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "program",
-                            Url = "program"
+                            Name = "Books",
+                            Url = "books"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Checking Account",
-                            Url = "checking account"
+                            Name = "Movies",
+                            Url = "movies"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "microchip",
-                            Url = "microchip"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Saint Kitts and Nevis",
-                            Url = "saint kitts and nevis"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "HTTP",
-                            Url = "http"
+                            Name = "Video Games",
+                            Url = "video-games"
                         });
                 });
 
@@ -84,9 +72,6 @@ namespace MarketApp.Server.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -102,901 +87,300 @@ namespace MarketApp.Server.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            Description = "Bedfordshire",
-                            ImageUrl = "https://picsum.photos/640/480/?image=675",
-                            Price = 0.4829885927453160m,
-                            Title = "deposit"
+                            Description = "The Hitchhiker's Guide to the Galaxy[note 1] (sometimes referred to as HG2G,[1] HHGTTG,[2] H2G2,[3] or tHGttG) is a comedy science fiction franchise created by Douglas Adams. Originally a 1978 radio comedy broadcast on BBC Radio 4, it was later adapted to other formats, including stage shows, novels, comic books, a 1981 TV series, a 1984 text-based computer game, and 2005 feature film.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/b/bd/H2G2_UK_front_cover.jpg",
+                            Title = "The Hitchhiker's Guide to the Galaxy"
                         },
                         new
                         {
                             Id = 2,
-                            CategoryId = 5,
-                            Description = "application Ergonomic Plastic Tuna",
-                            ImageUrl = "https://picsum.photos/640/480/?image=426",
-                            Price = 0.6558154818871850m,
-                            Title = "circuit"
+                            CategoryId = 1,
+                            Description = "Ready Player One is a 2011 science fiction novel, and the debut novel of American author Ernest Cline. The story, set in a dystopia in 2045, follows protagonist Wade Watts on his search for an Easter egg in a worldwide virtual reality game, the discovery of which would lead him to inherit the game creator's fortune. Cline sold the rights to publish the novel in June 2010, in a bidding war to the Crown Publishing Group (a division of Random House).[1] The book was published on August 16, 2011.[2] An audiobook was released the same day; it was narrated by Wil Wheaton, who was mentioned briefly in one of the chapters.[3][4]Ch. 20 In 2012, the book received an Alex Award from the Young Adult Library Services Association division of the American Library Association[5] and won the 2011 Prometheus Award.[6]",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/a/a4/Ready_Player_One_cover.jpg",
+                            Title = "Ready Player One"
                         },
                         new
                         {
                             Id = 3,
-                            CategoryId = 4,
-                            Description = "infomediaries Awesome input",
-                            ImageUrl = "https://picsum.photos/640/480/?image=186",
-                            Price = 0.5201297609049620m,
-                            Title = "Garden & Games"
+                            CategoryId = 1,
+                            Description = "Nineteen Eighty-Four (also stylised as 1984) is a dystopian social science fiction novel and cautionary tale written by English writer George Orwell. It was published on 8 June 1949 by Secker & Warburg as Orwell's ninth and final book completed in his lifetime. Thematically, it centres on the consequences of totalitarianism, mass surveillance and repressive regimentation of people and behaviours within society.[2][3] Orwell, a democratic socialist, modelled the totalitarian government in the novel after Stalinist Russia and Nazi Germany.[2][3][4] More broadly, the novel examines the role of truth and facts within politics and the ways in which they are manipulated.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/c/c3/1984first.jpg",
+                            Title = "Nineteen Eighty-Four"
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
-                            Description = "Investment Account",
-                            ImageUrl = "https://picsum.photos/640/480/?image=978",
-                            Price = 0.9647470176919850m,
-                            Title = "Versatile"
+                            Description = "The Matrix is a 1999 science fiction action film written and directed by the Wachowskis, and produced by Joel Silver. Starring Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, and Joe Pantoliano, and as the first installment in the Matrix franchise, it depicts a dystopian future in which humanity is unknowingly trapped inside a simulated reality, the Matrix, which intelligent machines have created to distract humans while using their bodies as an energy source. When computer programmer Thomas Anderson, under the hacker alias \"Neo\", uncovers the truth, he \"is drawn into a rebellion against the machines\" along with other people who have been freed from the Matrix.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg",
+                            Title = "The Matrix"
                         },
                         new
                         {
                             Id = 5,
-                            CategoryId = 5,
-                            Description = "Cotton",
-                            ImageUrl = "https://picsum.photos/640/480/?image=531",
-                            Price = 0.2803827463493270m,
-                            Title = "Customer"
+                            CategoryId = 2,
+                            Description = "Back to the Future is a 1985 American science fiction film directed by Robert Zemeckis. Written by Zemeckis and Bob Gale, it stars Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover, and Thomas F. Wilson. Set in 1985, the story follows Marty McFly (Fox), a teenager accidentally sent back to 1955 in a time-traveling DeLorean automobile built by his eccentric scientist friend Doctor Emmett \"Doc\" Brown (Lloyd). Trapped in the past, Marty inadvertently prevents his future parents' meeting—threatening his very existence—and is forced to reconcile the pair and somehow get back to the future.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/d/d2/Back_to_the_Future.jpg",
+                            Title = "Back to the Future"
                         },
                         new
                         {
                             Id = 6,
-                            CategoryId = 5,
-                            Description = "tan International even-keeled",
-                            ImageUrl = "https://picsum.photos/640/480/?image=814",
-                            Price = 0.195978464346080m,
-                            Title = "program"
+                            CategoryId = 2,
+                            Description = "Toy Story is a 1995 American computer-animated comedy film produced by Pixar Animation Studios and released by Walt Disney Pictures. The first installment in the Toy Story franchise, it was the first entirely computer-animated feature film, as well as the first feature film from Pixar. The film was directed by John Lasseter (in his feature directorial debut), and written by Joss Whedon, Andrew Stanton, Joel Cohen, and Alec Sokolow from a story by Lasseter, Stanton, Pete Docter, and Joe Ranft. The film features music by Randy Newman, was produced by Bonnie Arnold and Ralph Guggenheim, and was executive-produced by Steve Jobs and Edwin Catmull. The film features the voices of Tom Hanks, Tim Allen, Don Rickles, Wallace Shawn, John Ratzenberger, Jim Varney, Annie Potts, R. Lee Ermey, John Morris, Laurie Metcalf, and Erik von Detten. Taking place in a world where anthropomorphic toys come to life when humans are not present, the plot focuses on the relationship between an old-fashioned pull-string cowboy doll named Woody and an astronaut action figure, Buzz Lightyear, as they evolve from rivals competing for the affections of their owner, Andy Davis, to friends who work together to be reunited with Andy after being separated from him.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg",
+                            Title = "Toy Story"
                         },
                         new
                         {
                             Id = 7,
                             CategoryId = 3,
-                            Description = "Cliff Ferry",
-                            ImageUrl = "https://picsum.photos/640/480/?image=196",
-                            Price = 0.7634088073218140m,
-                            Title = "Producer"
+                            Description = "Half-Life 2 is a 2004 first-person shooter game developed and published by Valve. Like the original Half-Life, it combines shooting, puzzles, and storytelling, and adds features such as vehicles and physics-based gameplay.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/2/25/Half-Life_2_cover.jpg",
+                            Title = "Half-Life 2"
                         },
                         new
                         {
                             Id = 8,
-                            CategoryId = 5,
-                            Description = "Spurs Spurs",
-                            ImageUrl = "https://picsum.photos/640/480/?image=379",
-                            Price = 0.322131887819160m,
-                            Title = "AI"
+                            CategoryId = 3,
+                            Description = "Diablo II is an action role-playing hack-and-slash computer video game developed by Blizzard North and published by Blizzard Entertainment in 2000 for Microsoft Windows, Classic Mac OS, and macOS.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/d/d5/Diablo_II_Coverart.png",
+                            Title = "Diablo II"
                         },
                         new
                         {
                             Id = 9,
-                            CategoryId = 5,
-                            Description = "blockchains Home Loan Account",
-                            ImageUrl = "https://picsum.photos/640/480/?image=6",
-                            Price = 0.8199834910701920m,
-                            Title = "Peru"
+                            CategoryId = 3,
+                            Description = "Day of the Tentacle, also known as Maniac Mansion II: Day of the Tentacle, is a 1993 graphic adventure game developed and published by LucasArts. It is the sequel to the 1987 game Maniac Mansion.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/7/79/Day_of_the_Tentacle_artwork.jpg",
+                            Title = "Day of the Tentacle"
                         },
                         new
                         {
                             Id = 10,
-                            CategoryId = 2,
-                            Description = "Handmade Granite Bacon next generation Marshall Islands",
-                            ImageUrl = "https://picsum.photos/640/480/?image=989",
-                            Price = 0.2869826259902140m,
-                            Title = "initiatives"
+                            CategoryId = 3,
+                            Description = "The Xbox is a home video game console and the first installment in the Xbox series of video game consoles manufactured by Microsoft.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox-console.jpg",
+                            Title = "Xbox"
                         },
                         new
                         {
                             Id = 11,
-                            CategoryId = 5,
-                            Description = "Garden, Jewelery & Tools",
-                            ImageUrl = "https://picsum.photos/640/480/?image=688",
-                            Price = 0.339046468712160m,
-                            Title = "Compatible"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CategoryId = 5,
-                            Description = "Handmade Steel Shoes calculate",
-                            ImageUrl = "https://picsum.photos/640/480/?image=117",
-                            Price = 0.7591938998059360m,
-                            Title = "Pakistan Rupee"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CategoryId = 4,
-                            Description = "Mountains Unbranded Concrete Tuna Handcrafted Wooden Ball",
-                            ImageUrl = "https://picsum.photos/640/480/?image=298",
-                            Price = 0.3174672269839060m,
-                            Title = "logistical"
-                        },
-                        new
-                        {
-                            Id = 14,
                             CategoryId = 3,
-                            Description = "Crescent",
-                            ImageUrl = "https://picsum.photos/640/480/?image=588",
-                            Price = 0.1170310041783440m,
-                            Title = "Books"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CategoryId = 3,
-                            Description = "Managed Movies, Computers & Electronics",
-                            ImageUrl = "https://picsum.photos/640/480/?image=349",
-                            Price = 0.6655335224643040m,
-                            Title = "indexing"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CategoryId = 1,
-                            Description = "eyeballs Estates Unbranded",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1029",
-                            Price = 0.7272851910097570m,
-                            Title = "methodology"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CategoryId = 3,
-                            Description = "Avon Fresh",
-                            ImageUrl = "https://picsum.photos/640/480/?image=997",
-                            Price = 0.7115545956047690m,
-                            Title = "brand"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CategoryId = 3,
-                            Description = "copy Concrete",
-                            ImageUrl = "https://picsum.photos/640/480/?image=935",
-                            Price = 0.9126882561023050m,
-                            Title = "Refined"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CategoryId = 3,
-                            Description = "auxiliary Music, Kids & Toys deposit",
-                            ImageUrl = "https://picsum.photos/640/480/?image=679",
-                            Price = 0.9141229172135130m,
-                            Title = "index"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CategoryId = 1,
-                            Description = "Ergonomic Rubber Salad Savings Account",
-                            ImageUrl = "https://picsum.photos/640/480/?image=117",
-                            Price = 0.4173873858411120m,
-                            Title = "gold"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            CategoryId = 5,
-                            Description = "encoding Reverse-engineered Plastic",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1061",
-                            Price = 0.8804472200445860m,
-                            Title = "Soft"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            CategoryId = 4,
-                            Description = "database",
-                            ImageUrl = "https://picsum.photos/640/480/?image=318",
-                            Price = 0.9100725006856730m,
-                            Title = "Incredible Fresh Bacon"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            CategoryId = 3,
-                            Description = "homogeneous synergies",
-                            ImageUrl = "https://picsum.photos/640/480/?image=700",
-                            Price = 0.6187047818267480m,
-                            Title = "niches"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            CategoryId = 1,
-                            Description = "Functionality",
-                            ImageUrl = "https://picsum.photos/640/480/?image=810",
-                            Price = 0.2514299439894180m,
-                            Title = "virtual"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            CategoryId = 2,
-                            Description = "Managed sensor",
-                            ImageUrl = "https://picsum.photos/640/480/?image=82",
-                            Price = 0.4419215789295230m,
-                            Title = "magenta"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            CategoryId = 4,
-                            Description = "Rustic software",
-                            ImageUrl = "https://picsum.photos/640/480/?image=221",
-                            Price = 0.09251441843221120m,
-                            Title = "Lodge"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            CategoryId = 4,
-                            Description = "cyan bypass Metal",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1064",
-                            Price = 0.8036825130495660m,
-                            Title = "Lodge"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            CategoryId = 5,
-                            Description = "solid state",
-                            ImageUrl = "https://picsum.photos/640/480/?image=684",
-                            Price = 0.7081642075805170m,
-                            Title = "National"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            CategoryId = 1,
-                            Description = "deposit Hong Kong Grocery, Baby & Books",
-                            ImageUrl = "https://picsum.photos/640/480/?image=484",
-                            Price = 0.9914446874375010m,
-                            Title = "virtual"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            CategoryId = 1,
-                            Description = "Tactics",
-                            ImageUrl = "https://picsum.photos/640/480/?image=215",
-                            Price = 0.3728286491701440m,
-                            Title = "Generic Concrete Table"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            CategoryId = 4,
-                            Description = "Kyat Circles",
-                            ImageUrl = "https://picsum.photos/640/480/?image=631",
-                            Price = 0.3618452475762680m,
-                            Title = "multi-byte"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            CategoryId = 1,
-                            Description = "Gorgeous paradigms",
-                            ImageUrl = "https://picsum.photos/640/480/?image=929",
-                            Price = 0.1011301919854390m,
-                            Title = "mobile"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            CategoryId = 4,
-                            Description = "white Expanded",
-                            ImageUrl = "https://picsum.photos/640/480/?image=100",
-                            Price = 0.7390609940653020m,
-                            Title = "Lithuanian Litas"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            CategoryId = 2,
-                            Description = "Kids, Music & Home International overriding",
-                            ImageUrl = "https://picsum.photos/640/480/?image=3",
-                            Price = 0.01314546883941370m,
-                            Title = "Cotton"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            CategoryId = 5,
-                            Description = "Awesome Soft Chicken",
-                            ImageUrl = "https://picsum.photos/640/480/?image=882",
-                            Price = 0.3312795674296740m,
-                            Title = "Assurance"
-                        },
-                        new
-                        {
-                            Id = 36,
-                            CategoryId = 2,
-                            Description = "Ergonomic Wooden Table",
-                            ImageUrl = "https://picsum.photos/640/480/?image=735",
-                            Price = 0.825127071908080m,
-                            Title = "Liaison"
-                        },
-                        new
-                        {
-                            Id = 37,
-                            CategoryId = 2,
-                            Description = "Incredible Cotton Chips",
-                            ImageUrl = "https://picsum.photos/640/480/?image=843",
-                            Price = 0.5635261753976480m,
-                            Title = "B2B"
-                        },
-                        new
-                        {
-                            Id = 38,
-                            CategoryId = 5,
-                            Description = "Singapore Dollar Kroon systematic",
-                            ImageUrl = "https://picsum.photos/640/480/?image=139",
-                            Price = 0.4762846836844470m,
-                            Title = "override"
-                        },
-                        new
-                        {
-                            Id = 39,
-                            CategoryId = 4,
-                            Description = "mesh",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1061",
-                            Price = 0.9756300067693860m,
-                            Title = "Paradigm"
-                        },
-                        new
-                        {
-                            Id = 40,
-                            CategoryId = 5,
-                            Description = "AGP Customizable Granite",
-                            ImageUrl = "https://picsum.photos/640/480/?image=999",
-                            Price = 0.2477102888683350m,
-                            Title = "Kiribati"
-                        },
-                        new
-                        {
-                            Id = 41,
-                            CategoryId = 3,
-                            Description = "Louisiana orchestration Borders",
-                            ImageUrl = "https://picsum.photos/640/480/?image=197",
-                            Price = 0.6892554123508280m,
-                            Title = "Views"
-                        },
-                        new
-                        {
-                            Id = 42,
-                            CategoryId = 2,
-                            Description = "Fork",
-                            ImageUrl = "https://picsum.photos/640/480/?image=500",
-                            Price = 0.2390107495097470m,
-                            Title = "product"
-                        },
-                        new
-                        {
-                            Id = 43,
-                            CategoryId = 5,
-                            Description = "Awesome red Avon",
-                            ImageUrl = "https://picsum.photos/640/480/?image=565",
-                            Price = 0.5746837455668360m,
-                            Title = "Rustic Fresh Hat"
-                        },
-                        new
-                        {
-                            Id = 44,
-                            CategoryId = 3,
-                            Description = "deposit",
-                            ImageUrl = "https://picsum.photos/640/480/?image=948",
-                            Price = 0.5991717301834320m,
-                            Title = "Investor"
-                        },
-                        new
-                        {
-                            Id = 45,
-                            CategoryId = 5,
-                            Description = "evolve deposit",
-                            ImageUrl = "https://picsum.photos/640/480/?image=603",
-                            Price = 0.9765695219184430m,
-                            Title = "maroon"
-                        },
-                        new
-                        {
-                            Id = 46,
-                            CategoryId = 2,
-                            Description = "Indonesia Handcrafted regional",
-                            ImageUrl = "https://picsum.photos/640/480/?image=430",
-                            Price = 0.376528255071440m,
-                            Title = "Fresh"
-                        },
-                        new
-                        {
-                            Id = 47,
-                            CategoryId = 2,
-                            Description = "Shoes & Outdoors",
-                            ImageUrl = "https://picsum.photos/640/480/?image=622",
-                            Price = 0.4604583479305890m,
-                            Title = "cultivate"
-                        },
-                        new
-                        {
-                            Id = 48,
-                            CategoryId = 4,
-                            Description = "tangible",
-                            ImageUrl = "https://picsum.photos/640/480/?image=922",
-                            Price = 0.8900851079950730m,
-                            Title = "Planner"
-                        },
-                        new
-                        {
-                            Id = 49,
-                            CategoryId = 1,
-                            Description = "programming",
-                            ImageUrl = "https://picsum.photos/640/480/?image=583",
-                            Price = 0.5623507814393880m,
-                            Title = "Small"
-                        },
-                        new
-                        {
-                            Id = 50,
-                            CategoryId = 1,
-                            Description = "Liaison Fiji Dollar revolutionary",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1076",
-                            Price = 0.5495418298158930m,
-                            Title = "unleash"
-                        },
-                        new
-                        {
-                            Id = 51,
-                            CategoryId = 4,
-                            Description = "extranet cross-platform Rhode Island",
-                            ImageUrl = "https://picsum.photos/640/480/?image=880",
-                            Price = 0.4182642884558410m,
-                            Title = "backing up"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            CategoryId = 5,
-                            Description = "digital Montserrat enable",
-                            ImageUrl = "https://picsum.photos/640/480/?image=447",
-                            Price = 0.4680821949437630m,
-                            Title = "Landing"
-                        },
-                        new
-                        {
-                            Id = 53,
-                            CategoryId = 5,
-                            Description = "AI Azerbaijanian Manat Bosnia and Herzegovina",
-                            ImageUrl = "https://picsum.photos/640/480/?image=129",
-                            Price = 0.925463595146850m,
-                            Title = "Rustic Metal Bacon"
-                        },
-                        new
-                        {
-                            Id = 54,
-                            CategoryId = 1,
-                            Description = "invoice array Representative",
-                            ImageUrl = "https://picsum.photos/640/480/?image=652",
-                            Price = 0.7017070336703280m,
-                            Title = "Product"
-                        },
-                        new
-                        {
-                            Id = 55,
-                            CategoryId = 5,
-                            Description = "protocol",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1082",
-                            Price = 0.5451455191440640m,
-                            Title = "Savings Account"
-                        },
-                        new
-                        {
-                            Id = 56,
-                            CategoryId = 4,
-                            Description = "Cambridgeshire SDD",
-                            ImageUrl = "https://picsum.photos/640/480/?image=441",
-                            Price = 0.2558748558292560m,
-                            Title = "Fantastic Concrete Gloves"
-                        },
-                        new
-                        {
-                            Id = 57,
-                            CategoryId = 3,
-                            Description = "Rustic Metal Hat visionary",
-                            ImageUrl = "https://picsum.photos/640/480/?image=655",
-                            Price = 0.1277072307103420m,
-                            Title = "Tunnel"
-                        },
-                        new
-                        {
-                            Id = 58,
-                            CategoryId = 3,
-                            Description = "Cuban Peso Convertible Circles Identity",
-                            ImageUrl = "https://picsum.photos/640/480/?image=521",
-                            Price = 0.5751462314283650m,
-                            Title = "Money Market Account"
-                        },
-                        new
-                        {
-                            Id = 59,
-                            CategoryId = 2,
-                            Description = "Metal Plastic",
-                            ImageUrl = "https://picsum.photos/640/480/?image=162",
-                            Price = 0.7718532451886790m,
-                            Title = "silver"
-                        },
-                        new
-                        {
-                            Id = 60,
-                            CategoryId = 1,
-                            Description = "multimedia",
-                            ImageUrl = "https://picsum.photos/640/480/?image=644",
-                            Price = 0.643465805923610m,
-                            Title = "navigate"
-                        },
-                        new
-                        {
-                            Id = 61,
-                            CategoryId = 4,
-                            Description = "Games",
-                            ImageUrl = "https://picsum.photos/640/480/?image=257",
-                            Price = 0.4156120882319710m,
-                            Title = "connect"
-                        },
-                        new
-                        {
-                            Id = 62,
-                            CategoryId = 2,
-                            Description = "backing up Ergonomic Brand",
-                            ImageUrl = "https://picsum.photos/640/480/?image=623",
-                            Price = 0.8258027670261830m,
-                            Title = "Small Rubber Chips"
-                        },
-                        new
-                        {
-                            Id = 63,
-                            CategoryId = 3,
-                            Description = "Wooden calculate Cambridgeshire",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1066",
-                            Price = 0.441756093187650m,
-                            Title = "Saint Lucia"
-                        },
-                        new
-                        {
-                            Id = 64,
-                            CategoryId = 5,
-                            Description = "Island Course Music",
-                            ImageUrl = "https://picsum.photos/640/480/?image=997",
-                            Price = 0.9874417660604950m,
-                            Title = "Fantastic Fresh Computer"
-                        },
-                        new
-                        {
-                            Id = 65,
-                            CategoryId = 3,
-                            Description = "Handmade Concrete Chair tan",
-                            ImageUrl = "https://picsum.photos/640/480/?image=366",
-                            Price = 0.008842645988977880m,
-                            Title = "Enterprise-wide"
-                        },
-                        new
-                        {
-                            Id = 66,
-                            CategoryId = 3,
-                            Description = "Music & Toys",
-                            ImageUrl = "https://picsum.photos/640/480/?image=384",
-                            Price = 0.8800185340417210m,
-                            Title = "Wisconsin"
-                        },
-                        new
-                        {
-                            Id = 67,
-                            CategoryId = 1,
-                            Description = "product generate Ways",
-                            ImageUrl = "https://picsum.photos/640/480/?image=529",
-                            Price = 0.603228655767070m,
-                            Title = "Infrastructure"
-                        },
-                        new
-                        {
-                            Id = 68,
-                            CategoryId = 4,
-                            Description = "Frozen Iceland pixel",
-                            ImageUrl = "https://picsum.photos/640/480/?image=629",
-                            Price = 0.01628802002686510m,
-                            Title = "HDD"
-                        },
-                        new
-                        {
-                            Id = 69,
-                            CategoryId = 4,
-                            Description = "plum",
-                            ImageUrl = "https://picsum.photos/640/480/?image=831",
-                            Price = 0.7945698979794120m,
-                            Title = "granular"
-                        },
-                        new
-                        {
-                            Id = 70,
-                            CategoryId = 4,
-                            Description = "Agent Incredible Fresh Ball",
-                            ImageUrl = "https://picsum.photos/640/480/?image=565",
-                            Price = 0.5327092806014030m,
-                            Title = "circuit"
-                        },
-                        new
-                        {
-                            Id = 71,
-                            CategoryId = 1,
-                            Description = "quantify",
-                            ImageUrl = "https://picsum.photos/640/480/?image=1032",
-                            Price = 0.565871648481860m,
-                            Title = "Tools"
-                        },
-                        new
-                        {
-                            Id = 72,
-                            CategoryId = 2,
-                            Description = "synergies Metrics e-services",
-                            ImageUrl = "https://picsum.photos/640/480/?image=403",
-                            Price = 0.6698356813825450m,
-                            Title = "Awesome"
-                        },
-                        new
-                        {
-                            Id = 73,
-                            CategoryId = 5,
-                            Description = "Tunnel Circles Ridge",
-                            ImageUrl = "https://picsum.photos/640/480/?image=9",
-                            Price = 0.694332414291530m,
-                            Title = "Prairie"
-                        },
+                            Description = "The Super Nintendo Entertainment System (SNES), also known as the Super NES or Super Nintendo, is a 16-bit home video game console developed by Nintendo that was released in 1990 in Japan and South Korea.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/e/ee/Nintendo-Super-Famicom-Set-FL.jpg",
+                            Title = "Super Nintendo Entertainment System"
+                        });
+                });
+
+            modelBuilder.Entity("MarketApp.Shared.ProductType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductTypes");
+
+                    b.HasData(
                         new
                         {
-                            Id = 74,
-                            CategoryId = 1,
-                            Description = "Program Practical",
-                            ImageUrl = "https://picsum.photos/640/480/?image=927",
-                            Price = 0.2111547600333710m,
-                            Title = "exploit"
+                            Id = 1,
+                            Name = "Default"
                         },
                         new
                         {
-                            Id = 75,
-                            CategoryId = 3,
-                            Description = "24/7",
-                            ImageUrl = "https://picsum.photos/640/480/?image=812",
-                            Price = 0.4232942152026030m,
-                            Title = "programming"
+                            Id = 2,
+                            Name = "Paperback"
                         },
                         new
                         {
-                            Id = 76,
-                            CategoryId = 5,
-                            Description = "Function-based Buckinghamshire",
-                            ImageUrl = "https://picsum.photos/640/480/?image=204",
-                            Price = 0.2572255221568020m,
-                            Title = "quantify"
+                            Id = 3,
+                            Name = "E-Book"
                         },
                         new
                         {
-                            Id = 77,
-                            CategoryId = 1,
-                            Description = "Granite synthesize global",
-                            ImageUrl = "https://picsum.photos/640/480/?image=34",
-                            Price = 0.2507668640849920m,
-                            Title = "Steel"
+                            Id = 4,
+                            Name = "Audiobook"
                         },
                         new
                         {
-                            Id = 78,
-                            CategoryId = 1,
-                            Description = "mesh",
-                            ImageUrl = "https://picsum.photos/640/480/?image=853",
-                            Price = 0.587196285074570m,
-                            Title = "Small Rubber Ball"
+                            Id = 5,
+                            Name = "Stream"
                         },
                         new
                         {
-                            Id = 79,
-                            CategoryId = 1,
-                            Description = "responsive Analyst",
-                            ImageUrl = "https://picsum.photos/640/480/?image=31",
-                            Price = 0.9691385166413620m,
-                            Title = "Kids & Beauty"
+                            Id = 6,
+                            Name = "Blu-ray"
                         },
                         new
                         {
-                            Id = 80,
-                            CategoryId = 1,
-                            Description = "Turkish Lira Nebraska virtual",
-                            ImageUrl = "https://picsum.photos/640/480/?image=683",
-                            Price = 0.227986193025530m,
-                            Title = "Pines"
+                            Id = 7,
+                            Name = "VHS"
                         },
                         new
                         {
-                            Id = 81,
-                            CategoryId = 5,
-                            Description = "Fantastic",
-                            ImageUrl = "https://picsum.photos/640/480/?image=656",
-                            Price = 0.03451631061649440m,
-                            Title = "Mission"
+                            Id = 8,
+                            Name = "PC"
                         },
                         new
                         {
-                            Id = 82,
-                            CategoryId = 2,
-                            Description = "Multi-lateral feed",
-                            ImageUrl = "https://picsum.photos/640/480/?image=101",
-                            Price = 0.2318473550194470m,
-                            Title = "Montana"
+                            Id = 9,
+                            Name = "PlayStation"
                         },
                         new
                         {
-                            Id = 83,
-                            CategoryId = 5,
-                            Description = "Handcrafted Wooden Bacon Hawaii",
-                            ImageUrl = "https://picsum.photos/640/480/?image=188",
-                            Price = 0.1287713475194470m,
-                            Title = "reboot"
-                        },
+                            Id = 10,
+                            Name = "Xbox"
+                        });
+                });
+
+            modelBuilder.Entity("MarketApp.Shared.ProductVariant", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
+
+                    b.Property<decimal>("OriginalPrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("ProductId", "ProductTypeId");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.ToTable("ProductVariants");
+
+                    b.HasData(
                         new
                         {
-                            Id = 84,
-                            CategoryId = 1,
-                            Description = "Intelligent Frozen Chair ROI Organized",
-                            ImageUrl = "https://picsum.photos/640/480/?image=589",
-                            Price = 0.9248401671633190m,
-                            Title = "Functionality"
+                            ProductId = 1,
+                            ProductTypeId = 2,
+                            OriginalPrice = 19.99m,
+                            Price = 9.99m
                         },
                         new
                         {
-                            Id = 85,
-                            CategoryId = 5,
-                            Description = "alliance",
-                            ImageUrl = "https://picsum.photos/640/480/?image=140",
-                            Price = 0.5296746784742870m,
-                            Title = "Ukraine"
+                            ProductId = 1,
+                            ProductTypeId = 3,
+                            OriginalPrice = 0m,
+                            Price = 7.99m
                         },
                         new
                         {
-                            Id = 86,
-                            CategoryId = 5,
-                            Description = "transmitting",
-                            ImageUrl = "https://picsum.photos/640/480/?image=497",
-                            Price = 0.565646140202650m,
-                            Title = "logistical"
+                            ProductId = 1,
+                            ProductTypeId = 4,
+                            OriginalPrice = 29.99m,
+                            Price = 19.99m
                         },
                         new
                         {
-                            Id = 87,
-                            CategoryId = 4,
-                            Description = "vertical",
-                            ImageUrl = "https://picsum.photos/640/480/?image=326",
-                            Price = 0.8664743721865590m,
-                            Title = "Applications"
+                            ProductId = 2,
+                            ProductTypeId = 2,
+                            OriginalPrice = 14.99m,
+                            Price = 7.99m
                         },
                         new
                         {
-                            Id = 88,
-                            CategoryId = 5,
-                            Description = "Austria Intelligent Rubber Computer",
-                            ImageUrl = "https://picsum.photos/640/480/?image=228",
-                            Price = 0.1439579259455040m,
-                            Title = "Usability"
+                            ProductId = 3,
+                            ProductTypeId = 2,
+                            OriginalPrice = 0m,
+                            Price = 6.99m
                         },
                         new
                         {
-                            Id = 89,
-                            CategoryId = 5,
-                            Description = "Books, Beauty & Shoes",
-                            ImageUrl = "https://picsum.photos/640/480/?image=2",
-                            Price = 0.16401247152410m,
-                            Title = "Kids"
+                            ProductId = 4,
+                            ProductTypeId = 5,
+                            OriginalPrice = 0m,
+                            Price = 3.99m
                         },
                         new
                         {
-                            Id = 90,
-                            CategoryId = 4,
-                            Description = "Borders Intelligent Frozen Mouse",
-                            ImageUrl = "https://picsum.photos/640/480/?image=832",
-                            Price = 0.6081436185824670m,
-                            Title = "platforms"
+                            ProductId = 4,
+                            ProductTypeId = 6,
+                            OriginalPrice = 0m,
+                            Price = 9.99m
                         },
                         new
                         {
-                            Id = 91,
-                            CategoryId = 4,
-                            Description = "matrix",
-                            ImageUrl = "https://picsum.photos/640/480/?image=593",
-                            Price = 0.2469378750960180m,
-                            Title = "Officer"
+                            ProductId = 4,
+                            ProductTypeId = 7,
+                            OriginalPrice = 0m,
+                            Price = 19.99m
                         },
                         new
                         {
-                            Id = 92,
-                            CategoryId = 5,
-                            Description = "Optimization synthesizing",
-                            ImageUrl = "https://picsum.photos/640/480/?image=840",
-                            Price = 0.4787934879364170m,
-                            Title = "functionalities"
+                            ProductId = 5,
+                            ProductTypeId = 5,
+                            OriginalPrice = 0m,
+                            Price = 3.99m
                         },
                         new
                         {
-                            Id = 93,
-                            CategoryId = 2,
-                            Description = "Unbranded parsing Granite",
-                            ImageUrl = "https://picsum.photos/640/480/?image=754",
-                            Price = 0.5207686680266520m,
-                            Title = "harness"
+                            ProductId = 6,
+                            ProductTypeId = 5,
+                            OriginalPrice = 0m,
+                            Price = 2.99m
                         },
                         new
                         {
-                            Id = 94,
-                            CategoryId = 2,
-                            Description = "calculate",
-                            ImageUrl = "https://picsum.photos/640/480/?image=232",
-                            Price = 0.3693595363643650m,
-                            Title = "invoice"
+                            ProductId = 7,
+                            ProductTypeId = 8,
+                            OriginalPrice = 29.99m,
+                            Price = 19.99m
                         },
                         new
                         {
-                            Id = 95,
-                            CategoryId = 1,
-                            Description = "District Finland",
-                            ImageUrl = "https://picsum.photos/640/480/?image=439",
-                            Price = 0.5861702685441980m,
-                            Title = "Vista"
+                            ProductId = 7,
+                            ProductTypeId = 9,
+                            OriginalPrice = 0m,
+                            Price = 69.99m
                         },
                         new
                         {
-                            Id = 96,
-                            CategoryId = 1,
-                            Description = "Soft Direct",
-                            ImageUrl = "https://picsum.photos/640/480/?image=175",
-                            Price = 0.09742323451239030m,
-                            Title = "Technician"
+                            ProductId = 7,
+                            ProductTypeId = 10,
+                            OriginalPrice = 59.99m,
+                            Price = 49.99m
                         },
                         new
                         {
-                            Id = 97,
-                            CategoryId = 2,
-                            Description = "Slovenia SQL Fresh",
-                            ImageUrl = "https://picsum.photos/640/480/?image=307",
-                            Price = 0.1519951161640360m,
-                            Title = "Planner"
+                            ProductId = 8,
+                            ProductTypeId = 8,
+                            OriginalPrice = 24.99m,
+                            Price = 9.99m
                         },
                         new
                         {
-                            Id = 98,
-                            CategoryId = 2,
-                            Description = "Rapids",
-                            ImageUrl = "https://picsum.photos/640/480/?image=307",
-                            Price = 0.6163124814953220m,
-                            Title = "THX"
+                            ProductId = 9,
+                            ProductTypeId = 8,
+                            OriginalPrice = 0m,
+                            Price = 14.99m
                         },
                         new
                         {
-                            Id = 99,
-                            CategoryId = 1,
-                            Description = "bluetooth",
-                            ImageUrl = "https://picsum.photos/640/480/?image=171",
-                            Price = 0.6022960790987870m,
-                            Title = "invoice"
+                            ProductId = 10,
+                            ProductTypeId = 1,
+                            OriginalPrice = 299m,
+                            Price = 159.99m
                         },
                         new
                         {
-                            Id = 100,
-                            CategoryId = 5,
-                            Description = "online",
-                            ImageUrl = "https://picsum.photos/640/480/?image=655",
-                            Price = 0.1949677394066390m,
-                            Title = "bi-directional"
+                            ProductId = 11,
+                            ProductTypeId = 1,
+                            OriginalPrice = 399m,
+                            Price = 79.99m
                         });
                 });
 
@@ -1009,6 +393,30 @@ namespace MarketApp.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("MarketApp.Shared.ProductVariant", b =>
+                {
+                    b.HasOne("MarketApp.Shared.Product", "Product")
+                        .WithMany("ProductVariants")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MarketApp.Shared.ProductType", "ProductType")
+                        .WithMany()
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ProductType");
+                });
+
+            modelBuilder.Entity("MarketApp.Shared.Product", b =>
+                {
+                    b.Navigation("ProductVariants");
                 });
 #pragma warning restore 612, 618
         }
