@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MarketApp.Shared;
+﻿namespace MarketApp.Shared;
 
 public class Product {
     public int Id { get; set; }
@@ -11,5 +9,7 @@ public class Product {
     public Category? Category { get; set; }
     public int CategoryId { get; set; }
 
+    public bool Featured { get; set; } = false;
+    
     public List<ProductVariant> ProductVariants { get; set; } = new List<ProductVariant>();
 }
