@@ -15,15 +15,24 @@ public class ProductService : IProductService {
 
     public List<Product>? Products { get; set; }
     public string Message { get; set; } = "Loading Products";
+    public int CurrentPage { get; set; } = 1;
+    public int PageCount { get; set; } = 0;
+    public string LastSearchText { get; set; } = string.Empty;
 
     public async Task GetProducts(string? categoryUrl)
     {
         ServiceResponse<List<Product>>? result;
         if (categoryUrl == null)
-            result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/Product");
+            result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/Product/featured");
         else
             result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>($"api/Product/category/{categoryUrl}");
         Products = result?.Data;
+
+        CurrentPage = 1;
+        PageCount = 0;
+        if (Products.Count == 0)
+            Message = "No Products Found";
+        
         ProductsChanged.Invoke();
     }
 
@@ -33,16 +42,22 @@ public class ProductService : IProductService {
             await _httpClient.GetFromJsonAsync<ServiceResponse<Product>>($"/api/Product/{productId}");
         return result;
     }
-    public async Task SearchProducts(string searchText)
+    public async Task SearchProducts(string searchText, int page)
     {
-        var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(
-            $"api/Product/search/{searchText}");
+        LastSearchText = searchText;
+        var result = await _httpClient.GetFromJsonAsync<ServiceResponse<ProductSearchResult>>(
+            $"api/Product/search/{searchText}/{page}");
         if (result != null && result.Data != null)
-            Products = result.Data;
+        {
+            Products = result.Data.Products;
+            CurrentPage = result.Data.CurrentPage;
+            PageCount = result.Data.Pages;
+        }
         if (Products.Count == 0)
             Message = "No Products Found.";
         ProductsChanged?.Invoke();
     }
+
     public async Task<List<string>> GetProductsSearchSuggestions(string searchText)
     {
         var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<string>>>(

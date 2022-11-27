@@ -53,11 +53,25 @@ public class ProductService : IProductService {
         };
         return response;
     }
-    public async Task<ServiceResponse<List<Product>>> SearchProducts(string searchText)
+    public async Task<ServiceResponse<ProductSearchResult>> SearchProducts(string searchText, int page)
     {
-        var response = new ServiceResponse<List<Product>>
+        var pageResults = 2f;
+        var productsAll = await FindProductsBySearchText(searchText);
+        var pageCount = Math.Ceiling(productsAll.Count / pageResults);
+
+        var products = productsAll
+            .Skip((page - 1) * (int)pageResults)
+            .Take((int)pageResults)
+            .ToList();
+
+        var response = new ServiceResponse<ProductSearchResult>
         {
-            Data = await FindProductsBySearchText(searchText)
+            Data = new ProductSearchResult
+            {
+                Products = products,
+                CurrentPage = page,
+                Pages = (int)pageCount
+            }
         };
 
         return response;
@@ -104,5 +118,17 @@ public class ProductService : IProductService {
         {
             Data = results
         };
+    }
+    public async Task<ServiceResponse<List<Product>>> GetFeaturedProducts()
+    {
+        var response = new ServiceResponse<List<Product>>
+        {
+            Data = await _dataContext.Products
+                .Where(p => p.Featured)
+                .Include(p => p.ProductVariants)
+                .ToListAsync()
+        };
+
+        return response;
     }
 }

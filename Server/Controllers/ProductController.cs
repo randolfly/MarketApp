@@ -42,18 +42,26 @@ public class ProductController : ControllerBase {
     }
 
     [HttpGet]
-    [Route("search/{searchText}")]
-    public async Task<ActionResult<ServiceResponse<List<Product>>>> SearchProducts(string searchText)
+    [Route("search/{searchText}/{page}")]
+    public async Task<ActionResult<ServiceResponse<ProductSearchResult>>> SearchProducts(string searchText, int page)
     {
-        var response = await _productService.SearchProducts(searchText);
+        var response = await _productService.SearchProducts(searchText, page);
         return Ok(response);
     }
-    
+
     [HttpGet]
     [Route("search-suggestions/{searchText}")]
     public async Task<ActionResult<ServiceResponse<List<string>>>> GetProductSearchSuggestions(string searchText)
     {
         var response = await _productService.GetProductSearchSuggestions(searchText);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("featured")]
+    public async Task<ActionResult<ServiceResponse<List<string>>>> GetFeaturedProducts()
+    {
+        var response = await _productService.GetFeaturedProducts();
         return Ok(response);
     }
 
