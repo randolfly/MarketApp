@@ -1,7 +1,7 @@
 using MarketApp.Server.Data;
 using MarketApp.Server.Services.CategoryService;
 using MarketApp.Server.Services.ProductService;
-using Microsoft.AspNetCore.ResponseCompression;
+using MarketApp.Server.Services.CartService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +21,7 @@ builder.Services.AddSwaggerGen();
 // self-defined services
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
 

@@ -1,7 +1,7 @@
-﻿using System.Net.Http.Json;
-using MarketApp.Shared;
+﻿using MarketApp.Shared;
+using System.Net.Http.Json;
 
-namespace MarketApp.Client.Services;
+namespace MarketApp.Client.Services.ProductService;
 
 public class ProductService : IProductService {
     private readonly HttpClient _httpClient;

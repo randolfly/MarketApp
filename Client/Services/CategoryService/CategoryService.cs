@@ -1,7 +1,7 @@
 ﻿using MarketApp.Shared;
 using System.Net.Http.Json;
 
-namespace MarketApp.Client.Services;
+namespace MarketApp.Client.Services.CategoryService;
 
 public class CategoryService : ICategoryService {
     private readonly HttpClient _httpClient;

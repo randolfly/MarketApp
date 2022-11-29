@@ -1,6 +1,6 @@
 ﻿using MarketApp.Shared;
 
-namespace MarketApp.Client.Services;
+namespace MarketApp.Client.Services.ProductService;
 
 public interface IProductService {
     event Action ProductsChanged;
