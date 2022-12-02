@@ -1,5 +1,6 @@
 ﻿@page "/cart"
 @inject ICartService CartService
+@implements IDisposable
 
 <PageTitle>Shopping Cart</PageTitle>
 <h3>Shopping Cart</h3>
@@ -22,14 +23,17 @@ else
                         <a href="/product/@product.ProductId">@product.Title</a>
                     </h5>
                     <span>@product.ProductType</span>
+                    <input type="number" class="form-control input-quantity" min="1"
+                           value="@product.Quantity" @onchange="@(args => UpdateQuantity(args, product))"/>
+                    <button class="btn-delete" @onclick="@(() => RemoveProductFromCart(product.ProductId, product.ProductTypeId))">Delete</button>
                 </div>
                 <div class="cart-product-price">
-                    $@product.Price
+                    $@(product.Price * product.Quantity)
                 </div>
-            </div>
+            </div> 
         }
         <div class="cart-product-price">
-            Total (@_cartProducts.Count): $@_cartProducts.Sum(c => c.Price)
+            Total (@_cartProducts.Count): $@_cartProducts.Sum(c => c.Price*c.Quantity)
         </div>
     </div>
 }
@@ -40,6 +44,12 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        CartService.OnChange += StateHasChanged;
+        await LoadCart();
+    }
+    private async Task LoadCart()
+    {
+
         if ((await CartService.GetCartItems()).Count == 0)
         {
             _message = "Your cart is empty.";
@@ -49,6 +59,24 @@ else
         {
             _cartProducts = await CartService.GetCartProducts();
         }
+        StateHasChanged();
+    }
+    private async void RemoveProductFromCart(int productId, int productTypeId)
+    {
+        await CartService.RemoveProductFromCart(productId, productTypeId);
+        await LoadCart();
+    }
 
+    private async Task UpdateQuantity(ChangeEventArgs e, CartProductResponse productResponse)
+    {
+        productResponse.Quantity = int.Parse(e.Value.ToString());
+        if (productResponse.Quantity < 1)
+            productResponse.Quantity = 1;
+        await CartService.UpdateQuantity(productResponse);
+    }
+    
+    public void Dispose()
+    {
+        CartService.OnChange -= StateHasChanged;
     }
 }

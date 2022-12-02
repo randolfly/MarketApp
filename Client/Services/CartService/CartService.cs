@@ -19,7 +19,17 @@ public class CartService : ICartService {
     public async Task AddToCart(CartItem cartItem)
     {
         var cart = await GetLocalCart();
-        cart.Add(cartItem);
+
+        var sameItem = cart.Find(x => x.ProductId == cartItem.ProductId
+                                      && x.ProductTypeId == cartItem.ProductTypeId);
+        if (sameItem == null)
+        {
+            cart.Add(cartItem);
+        }
+        else
+        {
+            sameItem.Quantity += cartItem.Quantity;
+        }
 
         await _localStorageService.SetItemAsync("cart", cart);
 
@@ -35,9 +45,31 @@ public class CartService : ICartService {
     {
         var cartItems = await GetLocalCart();
         var response = await _httpClient.PostAsJsonAsync("api/cart/products", cartItems);
-        var cartProducts = 
+        var cartProducts =
             await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
         return cartProducts.Data;
+    }
+    public async Task RemoveProductFromCart(int productId, int productTypeId)
+    {
+        var cart = await GetLocalCart();
+        var cartItem = cart.Find(x => x.ProductId == productId && x.ProductTypeId == productTypeId);
+        if (cartItem != null)
+        {
+            cart.Remove(cartItem);
+            await _localStorageService.SetItemAsync("cart", cart);
+            OnChange.Invoke();
+        }
+        
+    }
+    public async Task UpdateQuantity(CartProductResponse product)
+    {
+        var cart = await GetLocalCart();
+        var cartItem = cart.Find(x => x.ProductId == product.ProductId && x.ProductTypeId == product.ProductTypeId);
+        if (cartItem != null)
+        {
+            cartItem.Quantity = product.Quantity;
+            await _localStorageService.SetItemAsync("cart", cart);
+        }
     }
 
     private async Task<List<CartItem>> GetLocalCart()
